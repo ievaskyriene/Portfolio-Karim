@@ -72,13 +72,36 @@ class Gallery {
             `;
         }
 
-        this.DOMlist.innerHTML = HTML
+        return this.DOMlist.innerHTML = HTML
         
     }
 
     renderFilter() {
-        return;
-    }
+        let tags = [];
+        
+        for(let i = 0; i<data.length; i++){
+           
+            for(let t = 0; t<data[i].categories.length; t++){
+               const tag = data[i].categories[t];
+                if(tags.indexOf(tag) === -1){
+                   tags.push(tag);
+                }
+              
+            }
+        }
+
+    let HTML = '';
+        for(let i = 0; i<tags.length; i++){
+            HTML+=`
+            <div class = "tag">${tags[i]}</div>`;
+        }
+
+
+    console.log(tags);
+    return this.DOMfilter.innerHTML = HTML;
+}
+
+   
    
 }
 
